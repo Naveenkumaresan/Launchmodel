@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coming Soon</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#0f0f0f;
+      color:white;
+      text-align:center;
+      overflow:hidden;
+    }
+
+    .container{
+      max-width:700px;
+      padding:20px;
+    }
+
+    h1{
+      font-size:4rem;
+      margin-bottom:20px;
+      letter-spacing:2px;
+    }
+
+    p{
+      font-size:1.3rem;
+      color:#cfcfcf;
+      line-height:1.7;
+    }
+
+    .highlight{
+      color:#ffb703;
+      font-weight:bold;
+    }
+
+    .glow{
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #ffb703;
+      }
+      to{
+        text-shadow:0 0 25px #ffb703;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="glow">Coming Soon</h1>
+
+    <p>
+       Launching this <span class="highlight">June</span> 🚀
+    </p>
+
+    <p style="margin-top:15px;">
+        we’re cooking something special
+    </p>
+  </div>
+
+</body>
+</html>
