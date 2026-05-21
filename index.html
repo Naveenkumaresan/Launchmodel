@@ -4,60 +4,158 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coming Soon</title>
+  
+  <!-- Importing a premium, modern Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, sans-serif;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
 
-    body{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:#0f0f0f;
-      color:white;
-      text-align:center;
-      overflow:hidden;
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Subtle dark gradient background */
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 100%);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
     }
 
-    .container{
-      max-width:700px;
-      padding:20px;
+    /* Ambient background breathing glow */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50vw;
+      height: 50vw;
+      background: radial-gradient(circle, rgba(255,183,3,0.1) 0%, rgba(0,0,0,0) 70%);
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      animation: pulse 6s infinite alternate ease-in-out;
     }
 
-    h1{
-      font-size:4rem;
-      margin-bottom:20px;
-      letter-spacing:2px;
+    /* Glassmorphism Card Effect */
+    .container {
+      max-width: 700px;
+      padding: 50px 40px;
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      
+      /* Base container entrance */
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 1s ease-out forwards;
     }
 
-    p{
-      font-size:1.3rem;
-      color:#cfcfcf;
-      line-height:1.7;
+    h1 {
+      font-size: 4.5rem;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+      font-weight: 700;
     }
 
-    .highlight{
-      color:#ffb703;
-      font-weight:bold;
+    p {
+      font-size: 1.2rem;
+      color: #cfcfcf;
+      line-height: 1.8;
+      font-weight: 300;
     }
 
-    .glow{
-      animation: glow 2s infinite alternate;
+    .highlight {
+      color: #ffb703;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
     }
 
-    @keyframes glow{
-      from{
-        text-shadow:0 0 10px #ffb703;
+    /* Interactive underline on hover for the highlight */
+    .highlight::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #ffb703;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.4s ease-out;
+    }
+    
+    .container:hover .highlight::after {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    .glow {
+      animation: glow 2.5s infinite alternate;
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: #ffffff;
+      margin-top: 15px;
+      font-weight: 400;
+    }
+
+    /* Previous Version Link Styles */
+    .previous-version {
+      font-size: 0.95rem;
+      color: #888888;
+      margin-top: 40px;
+    }
+
+    .previous-version a {
+      color: #ffb703;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .previous-version a:hover {
+      color: #ffc233;
+      text-shadow: 0 0 10px rgba(255, 183, 3, 0.6);
+    }
+
+    /* --- Animations --- */
+    @keyframes glow {
+      from { text-shadow: 0 0 10px rgba(255,183,3,0.4); }
+      to { text-shadow: 0 0 25px rgba(255,183,3,0.9), 0 0 10px rgba(255,255,255,0.3); }
+    }
+
+    @keyframes pulse {
+      from { transform: translate(-50%, -50%) scale(1); }
+      to { transform: translate(-50%, -50%) scale(1.15); }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      to{
-        text-shadow:0 0 25px #ffb703;
-      }
     }
+    
+    /* Staggered entrance for a cinematic feel */
+    h1 { animation: fadeUp 0.8s ease-out 0.2s forwards; opacity: 0; transform: translateY(20px); }
+    .msg-1 { animation: fadeUp 0.8s ease-out 0.4s forwards; opacity: 0; transform: translateY(20px); }
+    .msg-2 { animation: fadeUp 0.8s ease-out 0.6s forwards; opacity: 0; transform: translateY(20px); }
+    .msg-3 { animation: fadeUp 0.8s ease-out 0.8s forwards; opacity: 0; transform: translateY(20px); }
+
   </style>
 </head>
 <body>
@@ -65,13 +163,20 @@
   <div class="container">
     <h1 class="glow">Coming Soon</h1>
 
-    <p>
-       Launching this <span class="highlight">June</span> 🚀
+    <p class="msg-1">
+      Experience it this <span class="highlight">June</span> 
     </p>
 
-    <p style="margin-top:15px;">
-        we’re cooking something special
+    <p class="msg-2 subtitle">
+      We’re crafting something extraordinary, just for you.
     </p>
+
+    <!-- Link to previous version -->
+    <p class="msg-3 previous-version">
+      Until then, visit our previous version: 
+      <a href="https://studyhubv2.vercel.app" target="_blank" rel="noopener noreferrer">StudyHub v2</a>
+    </p>
+
   </div>
 
 </body>
